@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SAGE.ai</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ─── SIDEBAR NAV ─── -->
+  <nav id="sidebar">
+    <div id="brand">
+      <div id="brand-icon">S</div>
+      <span id="brand-text">SAGE.ai</span>
+    </div>
+    <ul id="nav-list">
+      <li class="nav-item active" data-page="query">
+        <span class="nav-icon">⚡</span>
+        <span class="nav-label">Query</span>
+        <kbd>Ctrl+Q</kbd>
+      </li>
+      <li class="nav-item" data-page="ingest">
+        <span class="nav-icon">📥</span>
+        <span class="nav-label">Ingest</span>
+        <kbd>Ctrl+I</kbd>
+      </li>
+      <li class="nav-item" data-page="export">
+        <span class="nav-icon">💾</span>
+        <span class="nav-label">Export</span>
+        <kbd>Ctrl+E</kbd>
+      </li>
+      <li class="nav-item" data-page="terminal">
+        <span class="nav-icon">🖥️</span>
+        <span class="nav-label">Terminal</span>
+        <kbd>Ctrl+T</kbd>
+      </li>
+      <li class="nav-item" data-page="print">
+        <span class="nav-icon">🖨️</span>
+        <span class="nav-label">Print</span>
+        <kbd>Ctrl+P</kbd>
+      </li>
+    </ul>
+    <div id="status-indicator">
+      <span id="status-dot"></span>
+      <span id="status-text">Checking…</span>
+    </div>
+  </nav>
+
+  <!-- ─── MAIN CONTENT ─── -->
+  <main id="content">
+
+    <!-- PAGE: QUERY -->
+    <section class="page active" id="page-query">
+      <h1>🔍 Query SAGE</h1>
+      <p class="subtitle">Describe the fault, symptom, or question. SAGE will search the entire document library and return a diagnostic response with citations.</p>
+      <div class="input-group">
+        <textarea id="query-input" rows="5" placeholder="e.g. Camera 14 showing no video output — what are the most likely causes?"></textarea>
+        <button id="query-send" class="btn-primary">Send Query</button>
+      </div>
+      <div id="query-result" class="result-area hidden">
+        <div class="result-header">
+          <h2>Diagnostic Response</h2>
+          <button id="query-copy" class="btn-ghost" title="Copy to clipboard">📋 Copy</button>
+        </div>
+        <pre id="query-answer"></pre>
+        <div id="query-citations" class="citations"></div>
+        <div id="query-elapsed" class="elapsed"></div>
+      </div>
+      <div id="query-loading" class="loading hidden">
+        <div class="spinner"></div>
+        <span>SAGE is thinking…</span>
+      </div>
+    </section>
+
+    <!-- PAGE: INGEST -->
+    <section class="page" id="page-ingest">
+      <h1>📥 Document Ingestion</h1>
+      <p class="subtitle">Trigger a full re-index of the document library. Place new files in <code>~/sage/docs/</code> then press the button below.</p>
+      <button id="ingest-btn" class="btn-primary">Re-Index Documents</button>
+      <div id="ingest-status" class="result-area hidden">
+        <h2 id="ingest-status-title">Status</h2>
+        <pre id="ingest-message"></pre>
+        <div id="ingest-elapsed" class="elapsed"></div>
+      </div>
+      <div id="ingest-loading" class="loading hidden">
+        <div class="spinner"></div>
+        <span>Ingesting documents — this may take a few minutes…</span>
+      </div>
+    </section>
+
+    <!-- PAGE: EXPORT -->
+    <section class="page" id="page-export">
+      <h1>💾 Export Answer</h1>
+      <p class="subtitle">Export the most recent query answer to a text file.</p>
+      <div id="export-preview" class="result-area">
+        <pre id="export-content">No answer to export yet. Run a query first.</pre>
+      </div>
+      <button id="export-btn" class="btn-primary">Export to File</button>
+    </section>
+
+    <!-- PAGE: TERMINAL -->
+    <section class="page" id="page-terminal">
+      <h1>🖥️ API Terminal</h1>
+      <p class="subtitle">Live log feed from the SAGE API backend.</p>
+      <div id="terminal-box">
+        <pre id="terminal-output">Waiting for logs…</pre>
+      </div>
+      <button id="terminal-refresh" class="btn-ghost">↻ Refresh Logs</button>
+    </section>
+
+    <!-- PAGE: PRINT -->
+    <section class="page" id="page-print">
+      <h1>🖨️ Print Screen</h1>
+      <p class="subtitle">Print or save the current view as a PDF.</p>
+      <button id="print-btn" class="btn-primary">Print Current View</button>
+    </section>
+  </main>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
