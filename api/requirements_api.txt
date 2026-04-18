@@ -1,0 +1,14 @@
+# SAGE.ai API — Python dependencies
+# Install: pip install -r requirements_api.txt
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+pydantic>=2.0
+# These are also required by the SAGE core (config/ingest/query):
+chromadb
+sentence-transformers
+pymupdf
+python-docx
+openpyxl
+ollama
+pytesseract
+Pillow
