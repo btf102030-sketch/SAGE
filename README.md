@@ -1,1 +1,3 @@
-Industrial Automation 
+The purpose of this repo is phase in a RAG deployment in an industrial automation environment that requires approximately 10,000 documents (including schematics with embedded pdf's, coding, plc files) and generate productive output that minimizes the time from fault to fix. This repo exists to collaborate and maintain structure within the deployment and utlize feedback to enhance the end-product.
+
+SAGE (System Analysis & Guidance Engine): a dedicated, offline AI server purpose-built to ingest and index all relevant technical documentation and provide structured, cited diagnostic guidance in response to described fault symptoms. SAGE is not a replacement for qualified personnel — it is a force multiplier that offers site specific metadata and reduces mean time to diagnosis, standardizes troubleshooting methodology, and creates a searchable historical record of every issue investigated on site.
